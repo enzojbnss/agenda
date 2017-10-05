@@ -28,4 +28,7 @@ class Pessoa {
 	public function setIdade($idade) {
 		$this->idade = $idade;
 	}
+	public function jsonSerialize() {
+		return get_object_vars($this);
+	}
 }

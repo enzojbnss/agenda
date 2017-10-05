@@ -8,10 +8,11 @@ class Page{
 	private $action;
 	
 	public function __construct($url,$base = "Layout.php"){
-		$className = $url [0];
+		$folder = $url [0];
+		$className = strtoupper(substr($folder, 0,1)).substr($folder, 1);
 		if(count($url)>1)$actionName = $url [1];
 		else $actionName = "index";
-		$this->corpo = "src/view/".$className."/".$actionName.".php";
+		$this->corpo = "src/view/".$folder."/".$actionName.".php";
 		if($base==null)$this->raiz = $this->corpo;
 		else $this->raiz = "src/view/".$base;
 		$this->controller = $className;
